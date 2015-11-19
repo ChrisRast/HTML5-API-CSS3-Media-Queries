@@ -1,0 +1,9 @@
+{
+  "minify": true,
+  "feature-detects": [
+    "test/battery",
+    "test/notification",
+    "test/proximity",
+    "test/vibration"
+  ]
+}

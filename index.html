@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#88dd00">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>HTML5 API &amp; CSS3 Media Queries</title>
+    <link rel="stylesheet" href="style/style.css" type="text/css">
+    <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="js/modernizr-custom.js" type="text/javascript"></script>
+    <script src="js/batteryAPI.js" type="text/javascript" async></script>
+</head>
+
+<body>
+    <h1>HTML5 API &amp; CSS3 Media Queries</h1>
+    <section class="battery-api">
+        <h2>API Battery</h2>
+        <div class="success">
+            <h3>Informations sur la batterie :</h3>
+            <p>Charge : <span class="status"></span>%.</p>
+            <p>Actuellement en charge : <span class="charging"></span>.</p>
+        </div>
+        <div class="error">
+            Damned ! Cette fonctionnalité n'est pas disponible. :(
+        </div>
+    </section>
+    <section class="luminosity">
+        <h2>Media Query Luminosity</h2>
+        <div class="success">
+            La luminosité est reconnue sur votre appareil. Essayez de le mettre à l'ombre ou à la lumière.
+        </div>
+        <div class="error">
+            Damned ! Cette fonctionnalité n'est pas disponible. :(
+        </div>
+
+    </section>
+    <section class="vibrate">
+        <h2>API Vibrate</h2>
+        <div class="success">
+            <input class="vibrationDuration" type="number" value="300" name="vibrationDuration" min="100" max="3000" step="100">
+            <button class="triggerVibration">Vibrate</button>
+        </div>
+        <div class="error">
+            Damned ! Cette fonctionnalité n'est pas disponible. :(
+        </div>
+    </section>
+    <section class="notify">
+        <h2>API Notification</h2>
+        <div class="success">
+            <input class="notificationTitle" type="text" value="Titre" name="notificationText">
+            <input class="notificationText" type="text" value="Et du contenu !" name="notificationText">
+            <button class="triggerNotification">Notify me</button>
+        </div>
+        <div class="error">
+            Damned ! Cette fonctionnalité n'est pas disponible. :(
+        </div>
+    </section>
+
+
+
+</body>
+
+</html>
