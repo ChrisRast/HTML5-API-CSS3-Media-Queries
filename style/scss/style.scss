@@ -6,10 +6,15 @@
 @import "../bower_components/highlightjs/styles/github.css";
 
 /* own style - START */ 
-#manifest {
-    display: none;
+body {
+    font-family: sans-serif;
 }
-
+#manifest {
+//    display: none;
+}
+.code {
+    font-family: monospace;
+}
 
 
 

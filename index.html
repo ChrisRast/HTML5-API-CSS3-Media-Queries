@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="theme-color" content="#88dd00">
+<!--    <meta name="theme-color" content="#88dd00">-->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <title>HTML5 API &amp; CSS3 Media Queries</title>
     <link rel="stylesheet" href="style/style.css" type="text/css">
@@ -24,36 +24,12 @@
     <section class="api homescreeninstall container" id="homescreen">
         <h2>Home screen installation</h2>
         <div class="content">
-            Makes this web page installable through a <span class="code">manifest.json</span>.
+            Makes this web page installable through a <span class="code">manifest.json</span> file.
             <pre><code class="html">
 &lt;link rel="manifest" href="manifest.json"&gt;
             </code></pre>
-            <button onclick="$('#manifest').toggle();">See the file.</button>
-            <pre id="manifest"><code class="json">
-{
-    "short_name": "HTML5 api",
-    "name": "HTML5 api web capabilities",
-    "theme_color": "#88dd00",
-    "background_color": "#ffffff",
-    "start_url": "index.html",
-    "display": "standalone",
-    "scope": "/chris/api/",
-    "icons": [
-        {
-            "src": "img/html5api.png",
-            "sizes": "36x36",
-            "type": "image/png"
-        },      {
-            "src": "img/html5api.png",
-            "sizes": "72x72",
-            "type": "image/png"
-        },      {
-            "src": "img/html5api.png",
-            "sizes": "144x144",
-            "type": "image/png"
-        },
-    ]
-}
+            <button onclick="getManifest();">See the file.</button>
+            <pre><code class="json" id="manifest">
             </code></pre>
         </div>
     </section>
@@ -62,7 +38,7 @@
         <div class="content">
             <input class="notificationTitle" type="text" value="Titre" name="notificationText">
             <input class="notificationText" type="text" value="Et du contenu !" name="notificationText">
-            <button class="triggerNotification" onclick="triggerNotification()">Notify me</button>
+            <button class="triggerNotification" onclick="triggerNotification();">Notify me</button>
         </div>
     </section>
 
@@ -106,7 +82,7 @@
         <h2>API Vibrate</h2>
         <div class="content">
             <input class="vibrationDuration" type="number" value="300" name="vibrationDuration" min="100" max="3000" step="100">
-            <button class="triggerVibration" onclick="triggerVibration()">Vibrate</button>
+            <button class="triggerVibration" onclick="triggerVibration();">Vibrate</button>
         </div>
     </section>
 

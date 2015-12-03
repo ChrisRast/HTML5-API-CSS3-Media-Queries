@@ -1,6 +1,6 @@
-hljs.initHighlightingOnLoad();
 $(function () {
     //on page load
+    hljs.initHighlighting();
     displayBatteryInfos();
     generateIndex();
 });
@@ -8,29 +8,21 @@ $(function () {
 function generateIndex() {
     $('#index').html('');
     $('.api').each(function (i, e) {
-        $('#index').append('<li><a href="#' + $(e).attr('id') + '">' + $(e).attr('id') + '</a></li>')
+        $('#index').append('<li><a href="#' + $(e).attr('id') + '">' + $(e).attr('id') + '</a></li>');
     });
 }
 
-
 /**
- * Makes your device vibrate
+ * Displays the currently used manifest.json
  */
-function triggerVibration() {
-    navigator.vibrate($('.vibrationDuration').val());
+function getManifest(){
+    $.get($('link[rel="manifest"]').attr('href'), function(data) {
+        $('#manifest').hide().html(data);
+        hljs.highlightBlock($('#manifest').get(0));
+        $('#manifest').show();
+    }, "text")
 }
 
-/**
- * Displays your device battery information
- */
-function displayBatteryInfos() {
-    /* @since FF43 */
-    navigator.getBattery().then(function (battery) {
-        console.log(battery);
-        $('.status').html(battery.level * 100);
-        $('.charging').html(""+battery.charging+"");
-    });
-}
 
 /**
  * Pops a notification on your device
@@ -54,9 +46,31 @@ function triggerNotification() {
 
     function createNotification() {
         var notif = {
-            body: $('.notificationText').val()
+            body: $('.notificationText').val(),
+            icon: 'img/html5api-3x.png'
         }
         var notification = new Notification($('.notificationTitle').val(), notif);
 
     }
+}
+
+
+
+
+/**
+ * Makes your device vibrate
+ */
+function triggerVibration() {
+    navigator.vibrate($('.vibrationDuration').val());
+}
+
+/**
+ * Displays your device battery information
+ */
+function displayBatteryInfos() {
+    /* @since FF43 */
+    navigator.getBattery().then(function (battery) {
+        $('.status').html(battery.level * 100);
+        $('.charging').html(""+battery.charging+"");
+    });
 }
