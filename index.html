@@ -7,55 +7,110 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <title>HTML5 API &amp; CSS3 Media Queries</title>
     <link rel="stylesheet" href="style/style.css" type="text/css">
+    <link rel="manifest" href="manifest.json">
     <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
-    <script src="js/modernizr-custom.js" type="text/javascript"></script>
-    <script src="js/batteryAPI.js" type="text/javascript" async></script>
+    <script src="bower_components/highlightjs/highlight.pack.min.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript"></script>
 </head>
 
 <body>
     <h1>HTML5 API &amp; CSS3 Media Queries</h1>
-    <section class="battery-api">
+    <nav class="index">
+        <ol id="index">
+            <!-- each api appears here -->
+            <li>Index is being generated...</li>
+        </ol>
+    </nav>
+    <section class="api homescreeninstall container" id="homescreen">
+        <h2>Home screen installation</h2>
+        <div class="content">
+            Makes this web page installable through a <span class="code">manifest.json</span>.
+            <pre><code class="html">
+&lt;link rel="manifest" href="manifest.json"&gt;
+            </code></pre>
+            <button onclick="$('#manifest').toggle();">See the file.</button>
+            <pre id="manifest"><code class="json">
+{
+    "short_name": "HTML5 api",
+    "name": "HTML5 api web capabilities",
+    "theme_color": "#88dd00",
+    "background_color": "#ffffff",
+    "start_url": "index.html",
+    "display": "standalone",
+    "scope": "/chris/api/",
+    "icons": [
+        {
+            "src": "img/html5api.png",
+            "sizes": "36x36",
+            "type": "image/png"
+        },      {
+            "src": "img/html5api.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },      {
+            "src": "img/html5api.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+    ]
+}
+            </code></pre>
+        </div>
+    </section>
+    <section class="api notify container" id="notify">
+        <h2>API Notification</h2>
+        <div class="content">
+            <input class="notificationTitle" type="text" value="Titre" name="notificationText">
+            <input class="notificationText" type="text" value="Et du contenu !" name="notificationText">
+            <button class="triggerNotification" onclick="triggerNotification()">Notify me</button>
+        </div>
+    </section>
+
+    <!--
+    <section class="api visibility container" id="visibility">
+        <h2>API Foreground detection</h2>
+        <div class="content">
+
+        </div>
+    </section>
+    -->
+
+
+    <!-- structure de base de chaque demo -->
+    <!--
+    <section class="api [functionality] container" id="[functionality]">
+        <h2>Title</h2>
+        <div class="content">
+        </div>
+    </section>
+    -->
+    <section class="api battery container" id="battery">
         <h2>API Battery</h2>
-        <div class="success">
+        <div class="content">
             <h3>Informations sur la batterie :</h3>
             <p>Charge : <span class="status"></span>%.</p>
             <p>Actuellement en charge : <span class="charging"></span>.</p>
         </div>
-        <div class="error">
-            Damned ! Cette fonctionnalité n'est pas disponible. :(
-        </div>
     </section>
-    <section class="luminosity">
+    <!--
+    <section class="api luminosity container">
         <h2>Media Query Luminosity</h2>
-        <div class="success">
-            La luminosité est reconnue sur votre appareil. Essayez de le mettre à l'ombre ou à la lumière.
+        <div class="content">
+            Luminosité reconnue ?
         </div>
-        <div class="error">
-            Damned ! Cette fonctionnalité n'est pas disponible. :(
-        </div>
+    </section>
+-->
 
-    </section>
-    <section class="vibrate">
+
+    <section class="api vibrate container" id="vibrate">
         <h2>API Vibrate</h2>
-        <div class="success">
+        <div class="content">
             <input class="vibrationDuration" type="number" value="300" name="vibrationDuration" min="100" max="3000" step="100">
-            <button class="triggerVibration">Vibrate</button>
-        </div>
-        <div class="error">
-            Damned ! Cette fonctionnalité n'est pas disponible. :(
+            <button class="triggerVibration" onclick="triggerVibration()">Vibrate</button>
         </div>
     </section>
-    <section class="notify">
-        <h2>API Notification</h2>
-        <div class="success">
-            <input class="notificationTitle" type="text" value="Titre" name="notificationText">
-            <input class="notificationText" type="text" value="Et du contenu !" name="notificationText">
-            <button class="triggerNotification">Notify me</button>
-        </div>
-        <div class="error">
-            Damned ! Cette fonctionnalité n'est pas disponible. :(
-        </div>
-    </section>
+
+
 
 
 

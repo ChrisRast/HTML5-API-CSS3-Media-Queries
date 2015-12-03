@@ -1,6 +1,7 @@
 {
-  "name": "battery-lux",
+  "name": "HTML5-api-capabilities",
   "dependencies": {
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "highlightjs": "~8.9.1"
   }
 }

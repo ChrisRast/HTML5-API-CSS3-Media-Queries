@@ -1,7 +1,21 @@
-.success {
+//@import "../../bower_components/KNACSS/sass/_00-config.scss";
+//@import "../../bower_components/KNACSS/sass/_01a-normalize.scss";
+//@import "../../bower_components/KNACSS/sass/_01b-base.scss";
+
+/*CSS*/
+@import "../bower_components/highlightjs/styles/github.css";
+
+/* own style - START */ 
+#manifest {
     display: none;
 }
 
+
+
+
+
+/* own style - END */ 
+    
 @media screen and (luminosity: normal) {
     .luminosity .error {
         display: none;
