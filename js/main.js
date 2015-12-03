@@ -28,7 +28,7 @@ function displayBatteryInfos() {
     navigator.getBattery().then(function (battery) {
         console.log(battery);
         $('.status').html(battery.level * 100);
-        $('.charging').html(battery.charging);
+        $('.charging').html(""+battery.charging+"");
     });
 }
 
