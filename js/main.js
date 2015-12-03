@@ -3,6 +3,9 @@ $(function () {
     hljs.initHighlighting();
     displayBatteryInfos();
     generateIndex();
+    detectVisibility();
+    //Hide manifest part with JS to keep the display block after
+    $('#manifest').hide();
 });
 
 function generateIndex() {
@@ -17,8 +20,8 @@ function generateIndex() {
  */
 function getManifest(){
     $.get($('link[rel="manifest"]').attr('href'), function(data) {
-        $('#manifest').hide().html(data);
-        hljs.highlightBlock($('#manifest').get(0));
+        $('#manifest code').html(data);
+        hljs.highlightBlock($('#manifest')[0]);
         $('#manifest').show();
     }, "text")
 }
@@ -55,6 +58,12 @@ function triggerNotification() {
 }
 
 
+function detectVisibility(){
+    $('.originalV8yState').text(document.visibilityState);
+    $(document).on('visibilitychange', function(event){
+    $('.v8y .content').append('<p>Visibility has changed ('+document.visibilityState+')!</p>');
+    });
+}
 
 
 /**
