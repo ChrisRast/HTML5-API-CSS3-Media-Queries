@@ -18,8 +18,8 @@ function generateIndex() {
 /**
  * Displays the currently used manifest.json
  */
-function getManifest(){
-    $.get($('link[rel="manifest"]').attr('href'), function(data) {
+function getManifest() {
+    $.get($('link[rel="manifest"]').attr('href'), function (data) {
         $('#manifest code').html(data);
         hljs.highlightBlock($('#manifest')[0]);
         $('#manifest').show();
@@ -58,10 +58,40 @@ function triggerNotification() {
 }
 
 
-function detectVisibility(){
+function detectVisibility() {
     $('.originalV8yState').text(document.visibilityState);
-    $(document).on('visibilitychange', function(event){
-    $('.v8y .content').append('<p>Visibility has changed ('+document.visibilityState+')!</p>');
+    $(document).on('visibilitychange', function (event) {
+        $('.v8y .content').append(
+            '<p>Visibility has changed (' +
+            document.visibilityState +
+            ')!</p>'
+        );
+    });
+}
+
+
+
+function triggerGeolocation() {
+    navigator.geolocation.getCurrentPosition(function (location) {
+        //Success
+        $('.long').html(location.coords.longitude)
+        $('.lat').html(location.coords.latitude)
+        $('.geoloc .content').append('<a href="http://maps.google.com/maps?&z=15&q=' + location.coords.latitude + '+' + location.coords.longitude + '&ll=' + location.coords.latitude + '+' + location.coords.longitude + '" target="_blank">Open in Google Maps.</a>')
+    }, function (error) {
+        //Error
+        $('.geoloc .content').html(error.message);
+    });
+}
+
+
+/**
+ * Displays your device battery information
+ */
+function displayBatteryInfos() {
+    /* @since FF43 */
+    navigator.getBattery().then(function (battery) {
+        $('.status').html(battery.level * 100);
+        $('.charging').html("" + battery.charging + "");
     });
 }
 
@@ -71,15 +101,4 @@ function detectVisibility(){
  */
 function triggerVibration() {
     navigator.vibrate($('.vibrationDuration').val());
-}
-
-/**
- * Displays your device battery information
- */
-function displayBatteryInfos() {
-    /* @since FF43 */
-    navigator.getBattery().then(function (battery) {
-        $('.status').html(battery.level * 100);
-        $('.charging').html(""+battery.charging+"");
-    });
 }

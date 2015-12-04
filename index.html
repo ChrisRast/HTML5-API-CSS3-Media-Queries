@@ -29,6 +29,7 @@
 &lt;link rel="manifest" href="manifest.json"&gt;
             </code></pre>
             <button onclick="getManifest();">See the file.</button>
+            <button onclick="$('#manifest').hide();">Close.</button>
             <pre id="manifest"><code class="json"></code></pre>
         </div>
     </section>
@@ -45,12 +46,20 @@
     <section class="api v8y container" id="visibility">
         <h2>API Foreground detection</h2>
         <em>(Change tab to see some change here.)</em>
+        <p>Original visibility: <span class="originalV8yState"></span></p>
         <div class="content">
-            <p>Original visibility: <span class="originalV8yState"></span></p>
         </div>
+        <button onclick="$('.v8y .content').html('');">Clear.</button>
     </section>
 
-
+    <section class="api geoloc container" id="geolocation">
+        <h2>API geolocation</h2>
+        <button onclick="triggerGeolocation();">Get location.</button>
+        <div class="content">
+            <p>Longitude: <span class="long"></span></p>
+            <p>Latitude: <span class="lat"></span></p>
+        </div>
+    </section>
 
     <!-- structure de base de chaque demo -->
     <!--
