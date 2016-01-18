@@ -58,6 +58,11 @@ function triggerNotification() {
 }
 
 
+/**
+ * Creates a listener which triggers an event when the visibility of the page is changed.
+ * @event visibilitychange#triggered when the page is hidden (switch tab) or displayed (return to tab).
+ * 
+ */
 function detectVisibility() {
     $('.originalV8yState').text(document.visibilityState);
     $(document).on('visibilitychange', function (event) {
@@ -71,6 +76,9 @@ function detectVisibility() {
 
 
 
+/**
+ * Tries to retrieve the user's location.
+ */
 function triggerGeolocation() {
     navigator.geolocation.getCurrentPosition(function (location) {
         //Success
@@ -84,11 +92,16 @@ function triggerGeolocation() {
 }
 
 
+function getNetworkInfo() {
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    console.log(connection);
+}
+
 /**
  * Displays your device battery information
+ * @since Available since Firefox 43
  */
 function displayBatteryInfos() {
-    /* @since FF43 */
     navigator.getBattery().then(function (battery) {
         $('.status').html(battery.level * 100);
         $('.charging').html("" + battery.charging + "");

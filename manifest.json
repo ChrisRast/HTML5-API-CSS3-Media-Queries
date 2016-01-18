@@ -4,23 +4,20 @@
     "theme_color": "#88dd00",
     "background_color": "#ffffff",
     "display": "standalone",
-    "scope": "/chris/api",
+    "scope": "/chris/api/",
     "icons": [
         {
             "src": "img/html5api-1x.png",
             "sizes": "36x36",
-            "type": "image/png",
-            "density": 1
+            "type": "image/png"
         }, {
             "src": "img/html5api-2x.png",
             "sizes": "72x72",
-            "type": "image/png",
-            "density": 2
+            "type": "image/png"
         }, {
             "src": "img/html5api-3x.png",
             "sizes": "144x144",
-            "type": "image/png",
-            "density": 3
+            "type": "image/png"
         }
     ]
 }
