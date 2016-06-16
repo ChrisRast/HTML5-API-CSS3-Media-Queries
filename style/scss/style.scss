@@ -3,17 +3,22 @@
 //@import "../../bower_components/KNACSS/sass/_01b-base.scss";
 
 /*CSS*/
+
 @import "../bower_components/highlightjs/styles/github.css";
 
-/* own style - START */ 
+/* own style - START */
+
 body {
     font-family: sans-serif;
     max-width: 1200px;
     margin: 0 auto;
+    padding-bottom: 2em;
 }
+
 #manifest {
-//    display: none;
+    //    display: none;
 }
+
 .code {
     font-family: monospace;
 }
@@ -24,9 +29,30 @@ body {
     padding: 1em;
 }
 
+#makemefullscreen button {
+    display: none;
+}
+#makemefullscreen:fullscreen {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+    width: 100%;
+    height: 100%;
+      display: flex;
+  justify-content: center;
+  align-items: center;
+    .fs-wrapper {
+        background-color: #fff;
+        width: 50%;
+        height: 50%;
+        button {
+            display: block;
+        }
+    }
+}
 
-/* own style - END */ 
-    
+
+/* own style - END */
+
 @media screen and (luminosity: normal) {
     .luminosity .error {
         display: none;

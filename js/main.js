@@ -2,6 +2,7 @@ $(function () {
     //on page load
     hljs.initHighlighting();
     displayBatteryInfos();
+    getNetworkInfo();
     generateIndex();
     detectVisibility();
     //Hide manifest part with JS to keep the display block after
@@ -94,7 +95,11 @@ function triggerGeolocation() {
 
 function getNetworkInfo() {
     var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-    console.log(connection);
+    if (connection) {
+        $('.networkinfo').html(connection);
+    } else {
+        $('.network').remove();
+    }
 }
 
 /**
@@ -114,4 +119,27 @@ function displayBatteryInfos() {
  */
 function triggerVibration() {
     navigator.vibrate($('.vibrationDuration').val());
+}
+
+function requestFullScreen() {
+    var element = document.getElementById('makemefullscreen');
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+    }
+}
+
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
 }
